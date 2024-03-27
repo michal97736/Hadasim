@@ -1,0 +1,29 @@
+:host ::ng-deep {
+
+    .form-control {
+        width: 15%;
+        margin: 1%;
+
+    }
+
+    // .p-field {
+    //     display: inline-block;
+    //     width: 30%; /* כדי שיהיו שלושה בשורה, כל אחד בערך 30% מרוחב הפקד */
+    //     margin-right: 2%; /* מרווח קטן בין כל אינפוט */
+    // }
+
+    .myBtn {
+        width: 15%;
+        margin: 1rem;
+    }
+    .addBtn{
+        padding-right: 3rem;
+    }
+
+}
+
+label {
+    width: 10%;
+    margin: 1%;
+    display: inline-block;
+}

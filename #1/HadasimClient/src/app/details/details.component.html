@@ -1,0 +1,48 @@
+<!-- <div *ngIf="member">
+{{member.firstName}}
+{{member.lastName}}
+{{member.tz}}
+{{member.city}}
+{{member.street}}
+{{member.numBuilding}}
+{{member.dateOfBitrth}}
+{{member.phone}}
+{{member.mobilePhone}}
+<p>covid details</p>
+{{member.covidDetails.dateOfPositiveResult}}
+{{member.covidDetails.dateOfRecoveryurer}}
+<p>vaccination </p>
+<ng-container *ngFor="let vaccine of member.vaccinations; let i=index">
+    {{vaccine.manufacturer}}
+    {{vaccine.dateOfReceivingVaccine}}
+
+</ng-container>
+</div> -->
+<div *ngIf="member" class="member-details">
+    <h2>{{member.firstName}} {{member.lastName}}</h2>
+    <ul>
+        <li><strong>מספר:</strong> {{member.idMember}}</li>
+        <li><strong>תעודת זהות:</strong> {{member.tz}}</li>
+        <li><strong>עיר:</strong> {{member.city}}</li>
+        <li><strong>רחוב:</strong> {{member.street}} {{member.numBuilding}}</li>
+        <li><strong>תאריך לידה:</strong> {{member.dateOfBitrth | date}}</li>
+        <li><strong>טלפון:</strong> {{member.phone}}</li>
+        <li><strong>פלאפון נייד:</strong> {{member.mobilePhone}}</li>
+    </ul>
+    <div *ngIf="member.covidDetails">
+        <h3>מידע על הקורונה</h3>
+        <ul>
+            <li><strong>תאריך קבלת תשובה חיובית:</strong> {{member.covidDetails.dateOfPositiveResult | date}}</li>
+            <li><strong>תאריך החלמה:</strong> {{member.covidDetails.dateOfRecovery | date}}</li>
+        </ul>
+    </div>
+    <div *ngIf="member.vaccinations.length > 0">
+        <h3>מידע על חיסונים</h3>
+        <ul>
+            <li *ngFor="let vaccine of member.vaccinations">
+                <strong>יצרן החיסון:</strong> {{vaccine.manufacturer}} <br>
+                <strong>תאריך קבלת החיסון:</strong> {{vaccine.dateOfReceivingVaccine | date}}
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,148 @@
+<form [formGroup]="memberForm" (ngSubmit)="onSubmit()">
+    <div class="p-fluid">
+        <div class="p-field">
+            <label for="firstName">שם פרטי</label>
+            <input pInputText type="text" id="firstName" formControlName="firstName" class="form-control" required />
+            <small
+                *ngIf="memberForm.controls['firstName'].invalid && (memberForm.controls['firstName'].dirty || memberForm.controls['firstName'].touched)"
+                class="p-error">
+                שם פרטי הינו שדה חובה
+            </small>
+        </div>
+
+        <div class="p-field">
+            <label for="lastName">שם משפחה</label>
+            <input pInputText type="text" id="lastName" formControlName="lastName" class="form-control" required />
+            <small
+                *ngIf="memberForm.controls['lastName'].invalid && (memberForm.controls['lastName'].dirty || memberForm.controls['lastName'].touched)"
+                class="p-error">
+                שם משפחה הינו שדה חובה
+            </small>
+        </div>
+
+        <div class="p-field">
+            <label for="tz">תעודת זהות</label>
+            <input type="number" pInputText formControlName="tz" id="tz" class="form-control" required
+                pattern="[0-9]{9}">
+            <div *ngIf="memberForm.controls['tz'].invalid && (memberForm.controls['tz'].dirty || memberForm.controls['tz'].touched)&&memberForm.controls['tz'].errors?.['required']"
+                class="p-error">
+                תעודת זהות הינה שדה חובה
+            </div>
+            <div *ngIf="memberForm.controls['tz'].errors?.['pattern']" class="p-error">
+                תעודת זהות חייבת להיות מורכבת מתשע ספרות
+            </div>
+
+        </div>
+
+        <div class="p-field">
+            <label for="dateOfBirth">תאריך לידה</label>
+            <input pInputText type="date" formControlName="dateOfBitrth" id="dateOfBitrth" class="form-control"
+                required>
+            <div *ngIf="memberForm.controls['dateOfBitrth'].invalid && (memberForm.controls['dateOfBitrth'].dirty || memberForm.controls['dateOfBitrth'].touched)"
+                class="p-error">
+                תאריך לידה הינו שדה חובה
+            </div>
+        </div>
+
+        <div class="p-field">
+            <label for="city">עיר</label>
+            <input type="text" pInputText formControlName="city" id="city" class="form-control" required>
+            <div *ngIf="memberForm.controls['city'].invalid && (memberForm.controls['city'].dirty || memberForm.controls['city'].touched)"
+                class="p-error">
+                עיר הינו שדה חובה
+            </div>
+        </div>
+
+        <div class="p-field">
+            <label for="street">רחוב</label>
+            <input pInputText type="text" id="street" formControlName="street" class="form-control" required />
+            <small
+                *ngIf="memberForm.controls['street'].invalid && (memberForm.controls['street'].dirty || memberForm.controls['street'].touched)"
+                class="p-error">
+                רחוב הינו שדה חובה
+            </small>
+        </div>
+
+        <div class="p-field">
+            <label for="numBuilding">מספר בנין</label>
+            <input pInputText type="number" id="numBuilding" formControlName="numBuilding" class="form-control"
+                required />
+            <small
+                *ngIf="memberForm.controls['numBuilding'].invalid && (memberForm.controls['numBuilding'].dirty || memberForm.controls['numBuilding'].touched)"
+                class="p-error">
+                מספר בנין הינו שדה חובה
+            </small>
+        </div>
+
+        <div class="p-field">
+            <label for="phone">טלפון</label>
+            <input pInputText type="text" id="phone" formControlName="phone" class="form-control" required />
+            <small
+                *ngIf="memberForm.controls['phone'].invalid && (memberForm.controls['phone'].dirty || memberForm.controls['phone'].touched)"
+                class="p-error">
+                טלפון הינו שדה חובה
+            </small>
+        </div>
+
+        <div class="p-field">
+            <label for="mobilePhone">פלאפון נייד</label>
+            <input pInputText type="text" id="mobilePhone" formControlName="mobilePhone" class="form-control" required
+                pattern="[0-9]{10}" />
+            <small
+                *ngIf="memberForm.controls['mobilePhone'].invalid && (memberForm.controls['mobilePhone'].dirty || memberForm.controls['mobilePhone'].touched)&&memberForm.controls['mobilePhone'].errors?.['required']"
+                class="p-error">
+                פלאפון נייד הינו שדה חובה
+            </small>
+            <div *ngIf="memberForm.controls['mobilePhone'].errors?.['pattern']" class="p-error">
+                פלאפון נייד חייב להיות מורכב מעשר ספרות
+            </div>
+        </div>
+
+        <div formGroupName="covidDetails">
+            <button pButton type="button" class="myBtn addBtn" (click)="addCovid()">הוספת פרטי קורונה</button>
+            <div *ngIf="isAddCovid" class="p-field">
+                <label for="dateOfPositiveResult">תאריך קבלת תשובה חיובית</label>
+                <input pInputText type="date" formControlName="dateOfPositiveResult" required id="dateOfPositiveResult"
+                    class="form-control">
+                <div *ngIf="memberForm.get('covidDetails.dateOfPositiveResult').invalid && (memberForm.get('covidDetails.dateOfPositiveResult').dirty || memberForm.get('covidDetails.dateOfPositiveResult').touched)"
+                    class="p-error">
+                    תאריך קבלת תשובה חיובית הינו שדה חובה
+                </div>
+                <div class="p-field">
+                    <label for="dateOfRecovery">תאריך החלמה</label>
+                    <input pInputText type="date" formControlName="dateOfRecovery" required id="dateOfRecovery"
+                        class="form-control">
+                    <div *ngIf="memberForm.get('covidDetails').hasError('datesInvalid') " class="p-error">
+                        תאריך חייב להיות מאוחר מתאריך קבלת תשובה חיובית
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button pButton type="button" class="myBtn addBtn" (click)="addVaccination()">הוספת חיסונים</button>
+        <div *ngIf="isAddVaccination" class="p-field">
+            <ng-container formArrayName="vaccinations">
+                <div *ngFor="let vaccination of vaccinations; let i = index">
+                    <div class="p-field" [formGroupName]="i">
+                        {{ i + 1 }}
+                        <label for="manufacturer"> יצרן</label>
+                        <input pInputText type="text" formControlName="manufacturer" id="manufacturer"
+                            class="form-control" />
+
+                    </div>
+                    <div class="p-field" [formGroupName]="i">
+                        <label for="dateOfReceivingVaccine">תאריך קבלת החיסון</label>
+                        <input pInputText type="date" formControlName="dateOfReceivingVaccine" 
+                            id="dateOfReceivingVaccine" class="form-control">
+                    </div>
+                </div>
+                <button pButton type="button" class="myBtn" (click)="addVaccinationToArray()">הוספת חיסון</button>
+            </ng-container>
+        </div>
+
+
+        <div class="p-field">
+            <button pButton type="submit" [label]="title" class="myBtn" [disabled]="memberForm.invalid"></button>
+        </div>
+    </div>
+</form>
