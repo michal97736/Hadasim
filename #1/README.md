@@ -53,11 +53,24 @@ The system supports functionalities such as adding, deleting, and editing member
 ```
 
 ## ScreenShot
+- Member list
+  
+   ![Alt text](https://github.com/michal97736/Hadasim/blob/main/screenshot1.png).
+- Member Details
 
+   ![Alt text](https://github.com/michal97736/Hadasim/blob/main/screenshot4.png).
 
+-  Add member with option to add COVID-19 and vaccination information.
+  
+   ![Alt text](https://github.com/michal97736/Hadasim/blob/main/screenshot2.png).
+   
+   ![Alt text](https://github.com/michal97736/Hadasim/blob/main/screenshot3.png).
+   
+- Edit member with option to edit COVID-19 and vaccination information
 
-
-
+   ![Alt text](https://github.com/michal97736/Hadasim/blob/main/screenshot5.png).
+   
+   ![Alt text](https://github.com/michal97736/Hadasim/blob/main/screenshot6.png).
 
 ## License
 This project is licensed under the MIT License. Feel free to use, modify, and distribute it as per the terms of the license.
