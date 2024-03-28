@@ -8,7 +8,7 @@ The system supports functionalities such as adding, deleting, and editing member
 - Member Management: Add, delete, and edit member details, including personal information such as name, ID, address, and contact details.
   with the validations related to each field
 - COVID-19 Information: Record and manage COVID-19-related data for each member, including the date of a positive result and date of recovery.
-- Vaccination Records: Maintain vaccination records for members, including the manufacturer of the vaccine and the date of vaccination.
+- Vaccination Records: Maintain vaccination records for members, including the manufacturer of the vaccine and the date of receiving vaccination.
 - Comprehensive Member View: View all members of the health fund with options to show detailed information for each member.
 
 ## Technologies Used
@@ -29,19 +29,19 @@ The system supports functionalities such as adding, deleting, and editing member
 
 - Clone the repository from GitHub.
 ```bash
-   git clone https://github.com/michal97736/HadasimProject.git
+   git clone https://github.com/michal97736/Hadasim.git
 ```
 - Ensure you have .NET 6 installed for the server-side environment.
 - Set up the .NET Core environment for the server-side
-- Configure the connection string for the SQL Server database in the server-side application.
-- Update the database by executing the command int the Package Manager Console
+- Configure the connection string for your SQL Server database accordingly in the server-side application.
+- Update the database by executing the command in the Package Manager Console
 ```bash
  update-database
 ```
 - Ensure you have Angular 16 installed for the client-side environment.
 - Navigate to the client-side directory and install client-side dependencies by running:
 ```bash
-  npm instal
+  npm install
 ```
 - Install PrimeNG and PrimeIcons dependencies by running
 ```bash
@@ -53,11 +53,24 @@ The system supports functionalities such as adding, deleting, and editing member
 ```
 
 ## ScreenShot
+- Member list
+  
+   ![Alt text](https://github.com/michal97736/Hadasim/blob/main/screenshot1.png).
+- Member Details
 
+   ![Alt text](https://github.com/michal97736/Hadasim/blob/main/screenshot4.png).
 
+-  Add member with option to add COVID-19 and vaccination information.
+  
+   ![Alt text](https://github.com/michal97736/Hadasim/blob/main/screenshot2.png).
+   
+   ![Alt text](https://github.com/michal97736/Hadasim/blob/main/screenshot3.png).
+   
+- Edit member with option to edit COVID-19 and vaccination information
 
-
-
+   ![Alt text](https://github.com/michal97736/Hadasim/blob/main/screenshot5.png).
+   
+   ![Alt text](https://github.com/michal97736/Hadasim/blob/main/screenshot6.png).
 
 ## License
 This project is licensed under the MIT License. Feel free to use, modify, and distribute it as per the terms of the license.

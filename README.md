@@ -5,8 +5,9 @@ with clear documentation and code structure for easy navigation and understandin
 
 # Project #1:  CovidProject
 This full-stack project aims to manage the health fund system, incorporating comprehensive data tracking for COVID-19 and vaccination records of members.
-Built with server-side technologies in C# .NET Core and a client-side Angular framework, the system provides a robust platform for healthcare management and data analysis.
-For more detailed information, please refer to the project's (https://github.com/michal97736/HadasimProject/tree/main/%231).
+Built with server-side technologies in C# .NET Core and a client-side Angular, the system provides a robust platform for healthcare management and data analysis.
+For more detailed information:(https://github.com/michal97736/Hadasim/blob/main/%231/README.md)
+
 
 # Project #2:  TwitterTower
 The Twitter Tower Builder is a console application designed to facilitate the planning and visualization of towers for the Twitter company.
