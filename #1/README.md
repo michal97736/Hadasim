@@ -29,12 +29,12 @@ The system supports functionalities such as adding, deleting, and editing member
 
 - Clone the repository from GitHub.
 ```bash
-   git clone https://github.com/michal97736/HadasimProject.git
+   git clone https://github.com/michal97736/Hadasim.git
 ```
 - Ensure you have .NET 6 installed for the server-side environment.
 - Set up the .NET Core environment for the server-side
 - Configure the connection string for the SQL Server database in the server-side application.
-- Update the database by executing the command int the Package Manager Console
+- Update the database by executing the command in the Package Manager Console
 ```bash
  update-database
 ```
