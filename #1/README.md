@@ -8,7 +8,7 @@ The system supports functionalities such as adding, deleting, and editing member
 - Member Management: Add, delete, and edit member details, including personal information such as name, ID, address, and contact details.
   with the validations related to each field
 - COVID-19 Information: Record and manage COVID-19-related data for each member, including the date of a positive result and date of recovery.
-- Vaccination Records: Maintain vaccination records for members, including the manufacturer of the vaccine and the date of vaccination.
+- Vaccination Records: Maintain vaccination records for members, including the manufacturer of the vaccine and the date of receiving vaccination.
 - Comprehensive Member View: View all members of the health fund with options to show detailed information for each member.
 
 ## Technologies Used
@@ -33,7 +33,7 @@ The system supports functionalities such as adding, deleting, and editing member
 ```
 - Ensure you have .NET 6 installed for the server-side environment.
 - Set up the .NET Core environment for the server-side
-- Configure the connection string for the SQL Server database in the server-side application.
+- Configure the connection string for your SQL Server database accordingly in the server-side application.
 - Update the database by executing the command in the Package Manager Console
 ```bash
  update-database
@@ -41,7 +41,7 @@ The system supports functionalities such as adding, deleting, and editing member
 - Ensure you have Angular 16 installed for the client-side environment.
 - Navigate to the client-side directory and install client-side dependencies by running:
 ```bash
-  npm instal
+  npm install
 ```
 - Install PrimeNG and PrimeIcons dependencies by running
 ```bash
