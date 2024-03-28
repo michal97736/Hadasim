@@ -26,6 +26,7 @@ export class MemberService {
   addMember(member: MemberModel) {
     return this.http.post<MemberModel>(`${this.routeUrl}`, member);
   }
+  
   updateMember(id:number,member:MemberModel){
     return this.http.put<MemberModel>(`${this.routeUrl}/${id}`,member)
   }

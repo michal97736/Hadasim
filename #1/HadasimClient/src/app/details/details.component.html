@@ -1,23 +1,4 @@
-<!-- <div *ngIf="member">
-{{member.firstName}}
-{{member.lastName}}
-{{member.tz}}
-{{member.city}}
-{{member.street}}
-{{member.numBuilding}}
-{{member.dateOfBitrth}}
-{{member.phone}}
-{{member.mobilePhone}}
-<p>covid details</p>
-{{member.covidDetails.dateOfPositiveResult}}
-{{member.covidDetails.dateOfRecoveryurer}}
-<p>vaccination </p>
-<ng-container *ngFor="let vaccine of member.vaccinations; let i=index">
-    {{vaccine.manufacturer}}
-    {{vaccine.dateOfReceivingVaccine}}
 
-</ng-container>
-</div> -->
 <div *ngIf="member" class="member-details">
     <h2>{{member.firstName}} {{member.lastName}}</h2>
     <ul>

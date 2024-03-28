@@ -4,6 +4,7 @@ namespace HadasimTwitterTower
 {
 	internal class Program
 	{
+		//טיפול במקרה שנבחר מלבן
 		public static void RectangleCase(int widthRectangle, int heightRectangle)
 		{
 			Console.WriteLine("Enter the width of the rectangle tower:");
@@ -16,10 +17,10 @@ namespace HadasimTwitterTower
 				Console.WriteLine("The tower's height must be greater than or equal to two, Please enter again");
 				heightRectangle = int.Parse(Console.ReadLine());
 			}
-
+			//אם המלבן הוא ריבוע
 			if (widthRectangle == heightRectangle)
 				Console.WriteLine($"This tower is a square. Area: {widthRectangle * heightRectangle}");
-
+			//אם ההפרש גדול מחמש
 			else if (Math.Abs(widthRectangle - heightRectangle) > 5)
 				Console.WriteLine($"Rectangle Tower area: {widthRectangle * heightRectangle}");
 			else
@@ -28,6 +29,7 @@ namespace HadasimTwitterTower
 
 		}
 
+		//בנית המחרוזת לפי count
 		public static string CalcStr(string str, int count)
 		{
 			string newstr = "";
@@ -38,13 +40,14 @@ namespace HadasimTwitterTower
 			return newstr;
 		}
 
+		//טיפול במקרה שנבחר משולש
 		public static void TrianglCase(int widthTriangle, int heightTriangle)
 		{
-			double calf;
+			double calf;//שוק המשולש
 			int choiceForTriangle = 0;
 			int copyLine = 1;
-			int midHeight;//מספר שורות באמצע//2
-			int midOddNum;//1
+			int midHeight;//מספר שורות באמצע
+			int midOddNum;//מספר הספרות האיזוגי שצריך להשתמש
 			int count = 1;
 			int three = 0;
 			int leftCopyLine = 0;
@@ -112,41 +115,7 @@ namespace HadasimTwitterTower
 			}
 		}
 
-		//static void Main(string[] args)
-		//{
-		//	///רוחב  חמש גובה ארבע
-		//	int width = 9;//אי זוגי
-		//	int height = 12;//זוגי
-		//	int copyLine = 1;
-		//	int midHeight = height - 2;//מספר שורות באמצע//2
-		//	int midOddNum = width / 2 - 1;//1
-		//	int count = 1;
-		//	int three = 0;
-		//	int leftCopyLine = 0;
-		//	string str = "";
-		//	if (midOddNum < midHeight)
-		//	{
-		//		copyLine = midHeight / midOddNum;//כמה שורות כל מספר
-		//		leftCopyLine = midHeight % midOddNum;//שארית להוסיף לספרה 3
-		//	}
-		//	while (count <= width)
-		//	{
-		//		if (count == 3)
-		//			three = leftCopyLine;
-		//		for (int i = 0; i < copyLine + three; i++)
-		//		{
-		//			int space = (width - count) / 2;///הרווחים לפני ואחרי
-		//			str = func1(" ", space);
-		//			str += func1("*", count);
-		//			str += func1(" ", space);
-		//			Console.WriteLine(str);
-		//			if (count == 1 || count == width)
-		//				break;
-		//		}
-		//		three = 0;
-		//		count += 2;
-		//	}
-		//}
+
 		static void Main(string[] args)
 		{
 			int choice = 0, widthRectangle = 0, heightRectangle = 0, widthTriangle = 0, heightTriangle = 0;
@@ -167,8 +136,6 @@ namespace HadasimTwitterTower
 						break;
 					case 2:
 						TrianglCase(widthTriangle, heightTriangle);
-
-						//Console.WriteLine($"Triangle Tower: Base = {widthTriangle}, Height = {heightTriangle}");
 						break;
 					case 3:
 						Console.WriteLine("Exiting the program.");

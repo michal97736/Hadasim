@@ -28,8 +28,6 @@ namespace HadasimCovid.Repository.Repository
 
 		public async Task DeleteAsync(int id)
 		{
-			//_context.Members.Remove(await GetByIdAsync(id));
-			//await _context.SaveChangesAsync();
 			var memeberToDelete = _context.Members
 			.Include(p => p.CovidDetails).Include(v=>v.Vaccinations)
 			.SingleOrDefault(p => p.IdMember == id);
@@ -49,19 +47,8 @@ namespace HadasimCovid.Repository.Repository
 
 		public  async Task<Member> GetByIdAsync(int id)
 		{
-			//CovidDetails covid = _context.CovidDetails.Where(c => c.IdMember == id).FirstOrDefaultAsync().Result;
-			//List<Vaccination> vaccinations = _context.Vaccinations.Where(c => c.IdMember == id).ToListAsync().Result;
-			//Member member = _context.Members.FindAsync(id).Result;
-			//member.CovidDetails = covid;
-			//member.Vaccinations = vaccinations;
-			//return member;
-			//return  _context.Members.Include(c=>c.CovidDetails)
-			//return await _context.Members.FindAsync(id);
-			//return  _context.Members.Include(m => m.CovidDetails).Include(m => m.Vaccinations).FirstOrDefaultAsync(m => m.IdMember == id).Result;
 			return await _context.Members.Include(m => m.CovidDetails).Include(m => m.Vaccinations).Where
 				(m => m.IdMember == id).FirstOrDefaultAsync();
-
-
 		}
 
 		public async Task<Member> UpdateAsync(int id, Member entity)

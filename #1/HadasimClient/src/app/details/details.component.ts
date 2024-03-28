@@ -19,6 +19,7 @@ export class DetailsComponent {
 
   }
 
+  //קבלת החבר הספציפי להצגה ע"י שליחת בקשה לשרת
   ngOnInit(): void {
       this.memberSer.getById(this.id).subscribe(succ => {
         this.member = succ

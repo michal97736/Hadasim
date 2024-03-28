@@ -24,12 +24,13 @@ export class AddMemberComponent {
   constructor(public memberSer: MemberService, private formBuilder: FormBuilder, public router: Router, public route: ActivatedRoute) { }
 
   ngOnInit() {
-
+    //קבלת אינדיקטור האם נמצאים במצב של עריכה או הוספה
     this.route.queryParams.subscribe(params => {
       this.isEditMember = params['isEdit'];
       this.i = params['index']
     });
 
+    //טיפול במקרה של עריכה
     if (this.isEditMember && this.i) {
       this.title = "שמירת שינויים"
 
@@ -63,6 +64,7 @@ export class AddMemberComponent {
 
     }
 
+    //טיפול במקרה של הוספה
     else {
       this.title = "שמירה"
       this.memberForm = this.formBuilder.group({
@@ -79,12 +81,7 @@ export class AddMemberComponent {
           dateOfPositiveResult: [''],
           dateOfRecovery: ['']
         }, { validators: this.dateValidation }),
-        vaccinations: this.formBuilder.array([
-          // this.formBuilder.group({
-          //   manufacturer: [''],
-          //   dateOfReceivingVaccine: ['']
-          // })
-        ])
+        vaccinations: this.formBuilder.array([])
       });
     }
   }
@@ -94,6 +91,7 @@ export class AddMemberComponent {
     return (<FormArray>this.memberForm.get('vaccinations')).controls
   }
 
+  //קבלת נתוני האוביקטים הפנימיים של חבר הקופה והכנסתם לטופס
   setObjectOfMember() {
     if (this.member.covidDetails) {
       this.memberForm.get('covidDetails').get('dateOfPositiveResult').setValue(this.removeTimeFromDate(this.member.covidDetails.dateOfPositiveResult.toString()))
@@ -110,6 +108,7 @@ export class AddMemberComponent {
     }
   }
 
+  //הוספתחיסון למערך באופן דינאמי
   addVaccinationToArray(): void {
     if (this.vaccinations.length < 4) {
       const vaccinationForm = this.formBuilder.group({
@@ -122,6 +121,7 @@ export class AddMemberComponent {
       alert("אפשר להוסיף עד ארבעה חיסונים")
   }
 
+  //ולידציה על תאריך
   dateValidation(group: FormGroup) {
     const dateOfPositiveResult = group.get('dateOfPositiveResult').value;
     const dateOfRecovery = group.get('dateOfRecovery').value;
@@ -136,15 +136,17 @@ export class AddMemberComponent {
     return dateParts[0];
   }
 
-
+  //הוספת פרטי קורונה
   addCovid() {
     this.isAddCovid = true
   }
 
+  //הוספת חיסונים
   addVaccination() {
     this.isAddVaccination = true
   }
 
+  //פונקציה שמירה טיפול בכל המקרים עריכה \הוספה וכו 
   onSubmit() {
     let memberToAdd: MemberModel = new MemberModel(0, this.memberForm.value.firstName, this.memberForm.value.lastName, this.memberForm.value.tz, this.memberForm.value.city,
       this.memberForm.value.street, this.memberForm.value.numBuilding, this.memberForm.value.dateOfBitrth, this.memberForm.value.phone, this.memberForm.value.mobilePhone,
@@ -176,8 +178,6 @@ export class AddMemberComponent {
         })
       }
 
-      console.log('Member model -update', memberToAdd);
-
       this.memberSer.updateMember(this.member.idMember, memberToAdd).subscribe(succ => {
         alert("עודכן בהצלחה")
         this.router.navigate(['/showMember'])
@@ -190,16 +190,15 @@ export class AddMemberComponent {
     }
 
     else {
-      
 
-      if (this.memberForm.value.covidDetails.dateOfPositiveResult!=''&&this.memberForm.value.covidDetails.dateOfRecovery!='')
+
+      if (this.memberForm.value.covidDetails.dateOfPositiveResult != '' && this.memberForm.value.covidDetails.dateOfRecovery != '')
         memberToAdd.covidDetails = new CovidDetailsModel(0, 1, this.memberForm.value.covidDetails.dateOfPositiveResult, this.memberForm.value.covidDetails.dateOfRecovery)
       if (this.vaccinations.length > 0)
         memberToAdd.vaccinations = []
       this.vaccinations.forEach(m => {
         memberToAdd.vaccinations.push(new VaccinationModel(0, 1, m.value.dateOfReceivingVaccine, m.value.manufacturer))
       })
-      console.log('Member model ', memberToAdd);
       this.memberSer.addMember(memberToAdd).subscribe(succ => {
         memberToAdd = succ;
         console.log('Member model added successfully:-succ', memberToAdd);

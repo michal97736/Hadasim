@@ -14,6 +14,7 @@ export class ShowMembersComponent {
   constructor(public memberSer: MemberService, public router: Router, public confirmationService: ConfirmationService, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
+    //קבלת כל חברי הקופה מיד בטעינת הקומפוננטה
     this.memberSer.getAll().subscribe(succ => {
       this.memberSer.members = succ
       console.log("members-NgOnInit", this.memberSer.members)
@@ -24,17 +25,20 @@ export class ShowMembersComponent {
     )
   }
 
+  //ניתוב לקומפוננטה שמראה את כל הפרטים של חבר הקופה שנבחר
   showDetails(i: number) {
     let memberId = this.memberSer.members[i].idMember;
     this.router.navigate(["/details"], { queryParams: { id: memberId } });
 
   }
 
+  //ניתוב לקומפוננטה לעריכת חבר
   edit(member: any, i: number) {
     this.router.navigate(['/addMember'], { queryParams: { isEdit: true, index: i } });
 
   }
 
+  //מחיקת חבר
   removeControl(event: Event, member: any, i: number) {
     this.confirmationService.confirm({
       target: event.target as EventTarget,

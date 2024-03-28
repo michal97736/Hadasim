@@ -15,9 +15,6 @@ namespace HadasimCovid.Service
 			services.AddScoped<ICrudService<Member>, MemberService>();
 			services.AddScoped<ICrudService<CovidDetails>, CovidDetailsService>();
 			services.AddScoped<ICrudService<Vaccination>, VaccinationService>();
-			//services.AddSingleton<IContext, MyDbContext>();
-
-
 			return services;
 		}
 	}
